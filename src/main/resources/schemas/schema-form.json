@@ -1,0 +1,180 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:io:gravitee:policy:uma:configuration:UMAPolicyConfiguration",
+  "properties" : {
+    "oauthResource" : {
+      "title": "OAuth2 resource",
+      "description": "OAuth2 resource used to validate token.",
+      "type" : "string"
+    },
+    "resourceType" : {
+      "title": "Resource Type",
+      "description": "The URI for the resource Type",
+      "type" : "string"
+    },
+    "resourceTypeAttr" : {
+      "title": "Resource Type Attr",
+      "description": "The URI for the resource Attr Type",
+      "type" : "string"
+    },
+    "includeSubPath" : {
+      "title": "Include subpaths on creation",
+      "description": "If the resource path is /v2/resource/{resourceId}, also resource /v2/resource/{resourceId}/* will be created",
+      "type" : "boolean",
+      "default": false
+    },
+    "includeJsonAttributes" : {
+      "title": "Include JSON query on creation based on a json filter pattern",
+      "description": "If /v2/resource/{resourceId} has 1st level attribute {attrId} matching the filter, also resource /v2/resource/{resourceId}/*/{attrId} will be created",
+      "type" : "string"
+    },
+    "includeJsonAttrBaseURI" : {
+      "title": "Base URI for JSON attributes on creation",
+      "description": "Define a different path for attr values",
+      "type" : "string"
+    },
+    "createOnResponse" : {
+      "title": "Create resource on response",
+      "description": "Create a resource",
+      "type" : "boolean",
+      "default": false
+    },
+    "deleteOnResponse" : {
+      "title": "delete resource on response",
+      "description": "Delete a resource",
+      "type" : "boolean",
+      "default": false
+    },
+    "getExtractResourceID" : {
+      "title": "resource id location (GET)",
+      "description": "obtain resource id from request path, query, or body",
+      "type" : "string",
+      "enum": [
+        "PATH",
+        "QUERY",
+        "RESPONSE_BODY",
+        "REQUEST_BODY"
+       ]
+    },
+    "postExtractResourceID" : {
+      "title": "resource id location (POST)",
+      "description": "obtain resource id from request path, query, or body",
+      "type" : "string",
+      "enum": [
+        "PATH",
+        "QUERY",
+        "RESPONSE_BODY",
+        "REQUEST_BODY"
+       ]
+    },
+    "deleteExtractResourceID" : {
+      "title": "resource id location (DELETE)",
+      "description": "obtain resource id from request path, query, or body",
+      "type" : "string",
+      "enum": [
+        "PATH",
+        "QUERY",
+        "RESPONSE_BODY",
+        "REQUEST_BODY"
+       ]
+    },
+    "putExtractResourceID" : {
+      "title": "resource id location (PUT)",
+      "description": "obtain resource id from request path, query, or body",
+      "type" : "string",
+      "enum": [
+        "PATH",
+        "QUERY",
+        "RESPONSE_BODY",
+        "REQUEST_BODY"
+       ]
+    },
+	"resourceIDPatternPath" : {
+      "title": "Path Resource ID pattern",
+      "description": "pattern to be used to extract the resource id from path",
+      "type" : "string"
+    },
+    	"resourceIDPatternQuery" : {
+      "title": "Query Resource ID pattern",
+      "description": "pattern to be used to extract the resource id from query",
+      "type" : "string"
+    },
+    "resourceIDPatternBody" : {
+      "title": "Body Resource ID pattern",
+      "description": "pattern to be used to extract the resource id from Body (request or response)",
+      "type" : "string"
+    },
+    	"appendResourceFilter" : {
+      "title": "appendResourceFilter",
+      "description": "parameter to be used to list allowed resources",
+      "type" : "string"
+    },
+    	"allFilterOnResponse" : {
+      "title": "Filter set of results based on BodyPattern",
+      "description": "parameter to be used to list allowed resources",
+      "type" : "boolean",
+      "default": false
+    },
+    "rootFilterOnResponse" : {
+      "title": "Filter set of results based on BodyPattern",
+      "description": "parameter to be used to list allowed resources",
+      "type" : "string",
+      "default": "$.."
+    },
+    "objectFilterOnResponse" : {
+      "title": "Filter set of results based on BodyPattern",
+      "description": "parameter to be used to list allowed resources",
+      "type" : "string",
+      "default": "@.id"
+    },
+    "resourceScopesGET": {
+      "type" : "array",
+      "title": "Required resource scopes for GET",
+      "description": "List of required scopes to access the resource using GET.",
+      "items" : {
+        "type" : "string",
+        "title": "Scope"
+      }
+    },
+    "resourceScopesPOST": {
+      "type" : "array",
+      "title": "Required resource scopes for POST",
+      "description": "List of required scopes to access the resource using POST.",
+      "items" : {
+        "type" : "string",
+        "title": "Scope"
+      }
+    },
+    "resourceScopesDELETE": {
+      "type" : "array",
+      "title": "Required resource scopes for DELETE",
+      "description": "List of required scopes to access the resource using DELETE.",
+      "items" : {
+        "type" : "string",
+        "title": "Scope"
+      }
+    },
+    "resourceScopesPUT": {
+      "type" : "array",
+      "title": "Required resource scopes for PUT",
+      "description": "List of required scopes to access the resource using PUT.",
+      "items" : {
+        "type" : "string",
+        "title": "Scope"
+      }
+    },
+    "resourceScopes": {
+      "type" : "array",
+      "title": "Resource scopes for newly created resources",
+      "description": "List of scopes assigned to new resources",
+      "items" : {
+        "type" : "string",
+        "title": "Scope"
+      }
+    }
+  },
+  "required": [
+    "oauthResource",
+    "resourceServerId"
+  ]
+}

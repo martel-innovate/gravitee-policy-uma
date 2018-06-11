@@ -1,0 +1,51 @@
+= UMA2 Policy
+
+== Phase
+
+[cols="2*", options="header"]
+|===
+^|onRequest
+^|onResponse
+
+^.^| X
+^.^| X
+
+|===
+
+== Description
+
+The UMA2 policy checks that a user is authorised to access a given resource.
+
+[source, shell]
+----
+$ curl -H "Authorization: Bearer |accessToken|" \
+           http://gateway/api/resource
+----
+
+== Configuration
+
+== Http Status Code
+
+|===
+|Code |Message
+
+.^| ```401```
+| In case of:
+
+* No OAuth Authorization Server resource has been configured
+
+* No OAuth authorization header was supplied
+
+* No OAuth access_token was supplied
+
+* Access token can not be validated by authorization server
+
+.^| ```403```
+| In case of:
+
+* Access token can not be validated because of a technical error with
+authorization server.
+
+* One of the required scopes is missing while introspecting access token.
+
+|===
